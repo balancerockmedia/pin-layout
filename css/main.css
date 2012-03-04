@@ -1,0 +1,12 @@
+#container {
+	background: #eee;
+	position: relative;
+	margin-top: 10px;
+}
+
+.pin {
+	width: 180px;
+	position: absolute;
+	background: #ccc;
+	padding: 10px;
+}
