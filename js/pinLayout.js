@@ -19,8 +19,9 @@
 		
 		// defaults
 		var settings = $.extend({
-			'column_width': 200,
-			'pin_gutter': 10
+			total_column_width: 200,
+			column_padding: 10,
+			column_margin: 10
 		}, options);
 		
 		// resize fuction
@@ -29,14 +30,14 @@
 		
 			var container_width = (window_width / 10) * 9;
 	
-			var container_gutter = (window_width / 10) / 2;
+			var container_margin = (window_width / 10) / 2;
 		
 			$('#container').css({
 				'width': container_width,
-				'margin-left': container_gutter
+				'margin-left': container_margin
 			});
 	
-			var num_columns = Math.floor(container_width / settings.column_width);
+			var num_columns = Math.floor(container_width / settings.total_column_width);
 	
 			var num_pins = $('.pin').length;
 	
@@ -50,16 +51,20 @@
 				var min = Array.min(column_heights);
 				var index = column_heights.findIndexByValue(min);
 		
-				var left = index * (settings.column_width + settings.pin_gutter);
+				var left = index * (settings.total_column_width + settings.column_margin);
 		
 				var top = column_heights[index];
 		
 				$(this).css({
 					'left': left,
-					'top': top
+					'top': top,
+					'padding': settings.column_padding,
+					'width': function() {
+						return settings.total_column_width - (settings.column_padding * 2)
+					}
 				});
 		
-				column_heights[index] += $(this).outerHeight() + settings.pin_gutter;
+				column_heights[index] += $(this).outerHeight() + settings.column_margin;
 			});
 		};
 		

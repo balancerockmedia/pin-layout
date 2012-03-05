@@ -7,7 +7,9 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/pinLayout.js"></script>
 <script type="text/javascript">
-	$('#container').pinLayout();
+	$('#container').pinLayout({
+		total_column_width: 150
+	});
 </script>
 </head>
 <body>
