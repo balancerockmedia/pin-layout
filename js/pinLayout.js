@@ -2,6 +2,14 @@
 
 (function($) {
   	$.fn.pinLayout = function(options) {
+		
+		// defaults
+		var settings = $.extend({
+			total_column_width: 200,
+			column_padding: 10,
+			column_margin: 10,
+			fade_in: true
+		}, options);
   	  	
 		// helper to get min value from array
 		Array.min = function(array) {
@@ -17,15 +25,8 @@
 			}
 		}
 		
-		// defaults
-		var settings = $.extend({
-			total_column_width: 200,
-			column_padding: 10,
-			column_margin: 10
-		}, options);
-		
 		// resize fuction
-		var resize = function() {
+		var resize = function(first_time) {
 			var window_width = $(window).width();
 		
 			var container_width = (window_width / 10) * 9;
@@ -72,11 +73,27 @@
 		
 				column_heights[index] += $(this).outerHeight() + settings.column_margin;
 			});
+			
+			// fade in sequence
+			if (first_time === true && settings.fade_in === true) {
+				$('.pin').hide();
+				
+				var counter = 0;
+				var interval = setInterval(function() {
+					$('.pin').eq(counter).fadeIn();
+					
+					if (counter < num_pins - 1) {
+						counter++;
+					} else {
+						clearInterval(interval);
+					}
+				}, 100);
+			}
 		};
 		
 		// run once on DOM load to set up inial layout
 		$(function() {
-			resize();
+			resize(true);
 		});
 		
 		// run when the window changes size
