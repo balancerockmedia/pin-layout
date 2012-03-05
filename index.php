@@ -7,14 +7,17 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/pinLayout.js"></script>
 <script type="text/javascript">
+
 	$('#container').pinLayout({
 		total_column_width: 150
 	});
+	
 </script>
 </head>
 <body>
 	
 <div id="container">
+	<div id="wrapper">
 	<?php
 	
 	// build some divs with random amounts of content to test out the layout
@@ -26,6 +29,7 @@
 	}
 	
 	?>
+	</div>
 </div>
 
 </body>

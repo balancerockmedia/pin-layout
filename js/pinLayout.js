@@ -37,8 +37,14 @@
 				'margin-left': container_margin
 			});
 	
-			var num_columns = Math.floor(container_width / settings.total_column_width);
-	
+			var num_columns = Math.floor(container_width / (settings.total_column_width + settings.column_margin));
+			
+			var wrapper_margin = (container_width - (num_columns * (settings.total_column_width + settings.column_margin))) / 2;
+			
+			$('#wrapper').css({
+				'left': wrapper_margin
+			});
+			
 			var num_pins = $('.pin').length;
 	
 			var column_heights = [];
