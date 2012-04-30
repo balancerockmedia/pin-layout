@@ -9,7 +9,7 @@
 <script type="text/javascript">
 
 	$('#container').pinLayout({
-		total_column_width: 150
+		total_column_width: 200
 	});
 	
 </script>

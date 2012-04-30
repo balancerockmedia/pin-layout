@@ -29,18 +29,25 @@
 		var resize = function(first_time) {
 			var window_width = $(window).width();
 		
-			var container_width = (window_width / 10) * 9;
+			var container_width = Math.floor((window_width / 10) * 9);
 	
-			var container_margin = (window_width / 10) / 2;
-		
+			var container_margin = Math.floor((window_width / 10) / 2);
+	
+			var num_columns = Math.floor(container_width / (settings.total_column_width + settings.column_margin));
+			
+			var wrapper_margin = Math.floor((container_width - (num_columns * (settings.total_column_width + settings.column_margin))) / 2);
+			
+			/*
+				FIXME This doens't work all that well on initlal load, but does once you start resizing
+			*/
+			if (wrapper_margin >= container_margin) {
+				container_width = container_width - (wrapper_margin - container_margin);
+			}
+			
 			$('#container').css({
 				'width': container_width,
 				'margin-left': container_margin
 			});
-	
-			var num_columns = Math.floor(container_width / (settings.total_column_width + settings.column_margin));
-			
-			var wrapper_margin = (container_width - (num_columns * (settings.total_column_width + settings.column_margin))) / 2;
 			
 			$('#wrapper').css({
 				'left': wrapper_margin
