@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="css/reset.css" type="text/css" />
 <link rel="stylesheet" href="css/main.css" type="text/css" />
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/pinLayout.js"></script>
+<script type="text/javascript" src="js/jquery.pinlayout.js"></script>
 <script type="text/javascript">
 
     $('#container').pinLayout({
